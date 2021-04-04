@@ -23,7 +23,7 @@ class HomeState extends State<Home> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daftar Item'),
+        title: Text('Make Over'),
       ),
       body: Column(children: [
         Expanded(
@@ -34,7 +34,7 @@ class HomeState extends State<Home> {
           child: SizedBox(
             width: double.infinity,
             child: RaisedButton(
-              child: Text("Tambah Item"),
+              child: Text("Tambah Produk"),
               onPressed: () async {
                 var item = await navigateToEntryForm(context, null);
                 if (item != null) {

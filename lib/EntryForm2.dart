@@ -45,7 +45,7 @@ class EntryFormState extends State<EntryForm> {
                   controller: nameController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Nama Produk',
+                    labelText: 'Kategori Produk',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -54,61 +54,7 @@ class EntryFormState extends State<EntryForm> {
                     //
                   },
                 ),
-              ),
-
-              // harga
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                child: TextField(
-                  controller: priceController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Harga',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    //
-                  },
-                ),
-              ),
-
-              // Kode Barang
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                child: TextField(
-                  controller: kodeController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Kode Produk',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    //
-                  },
-                ),
-              ),
-
-              // Stok
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                child: TextField(
-                  controller: stokController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Stok',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    //
-                  },
-                ),
-              ),
+              ), 
 
               // tombol button
               Padding(
