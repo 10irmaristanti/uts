@@ -1,37 +1,31 @@
 import 'package:flutter/material.dart';
 
-import 'model/Item.dart';
+import 'model/Kategori.dart';
 
-class EntryForm extends StatefulWidget {
-  final Item item;
-  EntryForm(this.item);
+class EntryForm2 extends StatefulWidget {
+  final Kategori kategori;
+  EntryForm2(this.kategori);
 
   @override
-  EntryFormState createState() => EntryFormState(this.item);
+  EntryForm2State createState() => EntryForm2State(this.kategori);
 }
 
 //class controller
-class EntryFormState extends State<EntryForm> {
-  Item item;
-  EntryFormState(this.item);
-  TextEditingController nameController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController kodeController = TextEditingController();
-  TextEditingController stokController = TextEditingController();
+class EntryForm2State extends State<EntryForm2> {
+  Kategori kategori;
+  EntryForm2State(this.kategori);
+  TextEditingController kategoriProdukController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //kondisi
-    if (item != null) {
-      nameController.text = item.produk;
-      priceController.text = item.harga.toString();
-      kodeController.text = item.kode;
-      stokController.text = item.stok.toString();
+    if (kategori != null) {
+      kategoriProdukController.text = kategori.kategoriProduk;
     }
     //rubah
     return Scaffold(
         appBar: AppBar(
-          title: item == null ? Text('Tambah') : Text('Ubah'),
+          title: kategori == null ? Text('Tambah') : Text('Ubah'),
           leading: Icon(Icons.keyboard_arrow_left),
         ),
         body: Padding(
@@ -42,7 +36,7 @@ class EntryFormState extends State<EntryForm> {
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 child: TextField(
-                  controller: nameController,
+                  controller: kategoriProdukController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     labelText: 'Kategori Produk',
@@ -71,22 +65,16 @@ class EntryFormState extends State<EntryForm> {
                           textScaleFactor: 1.5,
                         ),
                         onPressed: () {
-                          if (item == null) {
+                          if (kategori == null) {
                             // tambah data
-                            item = Item(
-                                nameController.text,
-                                int.parse(priceController.text),
-                                kodeController.text,
-                                int.parse(stokController.text));
+                            kategori = Kategori(
+                                kategoriProdukController.text);
                           } else {
                             // ubah data
-                            item.produk = nameController.text;
-                            item.harga = int.parse(priceController.text);
-                            item.kode = kodeController.text;
-                            item.stok = int.parse(stokController.text);
+                            kategori.kategoriProduk = kategoriProdukController.text;
                           }
                           // kembali ke layar sebelumnya dengan membawa objek item
-                          Navigator.pop(context, item);
+                          Navigator.pop(context, kategori);
                         },
                       ),
                     ),

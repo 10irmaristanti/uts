@@ -1,4 +1,4 @@
-class Item {
+class Kategori {
   int _id;
   String _kategoriProduk;
 
@@ -8,10 +8,10 @@ class Item {
   set kategoriProduk(String value) => this._kategoriProduk = value;
 
   // konstruktor versi 1
-  Item(this._kategoriProduk);
+  Kategori(this._kategoriProduk);
 
   // konstruktor versi 2: konversi dari Map ke Item
-  Item.fromMap(Map<String, dynamic> map) {
+  Kategori.fromMap(Map<String, dynamic> map) {
     this._id = map['id'];
     this._kategoriProduk = map['kategoriProduk'];
   }
