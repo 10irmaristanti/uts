@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'model/Item.dart';
+import 'model/Kategori.dart';
 
 class DbHelper {
   static DbHelper _dbHelper;
@@ -59,7 +60,7 @@ class DbHelper {
     return count;
   }
 
-  Future<int> insertkat(Item object) async {
+  Future<int> insertkat(Kategori object) async {
     Database db = await this.initDb();
     int count = await db.insert('kategori', object.toMap());
     return count;
@@ -73,7 +74,7 @@ class DbHelper {
     return count;
   }
 
-  Future<int> updatekat(Item object) async {
+  Future<int> updatekat(Kategori object) async {
     Database db = await this.initDb();
     int count = await db
         .update('kategori', object.toMap(), where: 'id=?', whereArgs: [object.id]);
@@ -103,12 +104,12 @@ class DbHelper {
     return itemList;
   }
 
-  Future<List<Item>> getItemListkat() async {
+  Future<List<Kategori>> getItemListkat() async {
     var itemMapList = await select();
     int count = itemMapList.length;
-    List<Item> itemList = List<Item>();
+    List<Kategori> itemList = List<Kategori>();
     for (int i = 0; i < count; i++) {
-      itemList.add(Item.fromMap(itemMapList[i]));
+      itemList.add(Kategori.fromMap(itemMapList[i]));
     }
     return itemList;
   }
