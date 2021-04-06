@@ -159,8 +159,7 @@ class EntryFormState extends State<EntryForm> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                        
                       ),
                     ),
                   ],

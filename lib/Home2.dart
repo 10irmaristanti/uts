@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'DBHelper.dart';
 import 'EntryForm2.dart';
@@ -16,6 +15,11 @@ class Home2State extends State<Home2> {
   DbHelper dbHelper = DbHelper(); //panggil class db helper
   int count = 0;
   List<Kategori> kategoriList; // deklarasi list
+  @override
+  void initState() {
+    super.initState();
+    updateListView();
+  }
   @override
   Widget build(BuildContext context) {
     if (kategoriList == null) {
@@ -71,17 +75,22 @@ class Home2State extends State<Home2> {
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.red,
-              child: Icon(Icons.ad_units),
-            ),
+              child: Icon(Icons.face_retouching_natural)),
             title: Text(
               this.kategoriList[index].kategoriProduk,
               style: textStyle,
+            ),
+             subtitle: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(this.kategoriList[index].keterangan),
+                ],
             ),
             trailing: GestureDetector(
               child: Icon(Icons.delete),
               onTap: () async {
                 //TODO 3 Panggil Fungsi untuk Delete dari DB berdasarkan Item
-              int result = await dbHelper.delete(this.kategoriList[index].id);
+              int result = await dbHelper.deletekat(this.kategoriList[index].id);
                   if (result > 0) {
                     updateListView();
                   }

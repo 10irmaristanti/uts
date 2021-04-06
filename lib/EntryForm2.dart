@@ -15,12 +15,14 @@ class EntryForm2State extends State<EntryForm2> {
   Kategori kategori;
   EntryForm2State(this.kategori);
   TextEditingController kategoriProdukController = TextEditingController();
+  TextEditingController keteranganController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //kondisi
     if (kategori != null) {
       kategoriProdukController.text = kategori.kategoriProduk;
+      keteranganController.text = kategori.keterangan;
     }
     //rubah
     return Scaffold(
@@ -50,6 +52,22 @@ class EntryForm2State extends State<EntryForm2> {
                 ),
               ), 
 
+                Padding(
+                padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                child: TextField(
+                  controller: keteranganController,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Keterangan',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    //
+                  },
+                ),
+              ),
               // tombol button
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
@@ -68,10 +86,12 @@ class EntryForm2State extends State<EntryForm2> {
                           if (kategori == null) {
                             // tambah data
                             kategori = Kategori(
-                                kategoriProdukController.text);
+                                kategoriProdukController.text, 
+                                keteranganController.text);
                           } else {
                             // ubah data
                             kategori.kategoriProduk = kategoriProdukController.text;
+                            kategori.keterangan = keteranganController.text;
                           }
                           // kembali ke layar sebelumnya dengan membawa objek item
                           Navigator.pop(context, kategori);
@@ -93,8 +113,7 @@ class EntryForm2State extends State<EntryForm2> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
+                        
                       ),
                     ),
                   ],

@@ -15,7 +15,7 @@ class DbHelper {
     String path = directory.path + 'item.db';
 
     //create, read databases
-    var itemDatabase = openDatabase(path, version: 5, onCreate: _createDb);
+    var itemDatabase = openDatabase(path, version: 7, onCreate: _createDb);
 
     //mengembalikan nilai object sebagai hasil dari fungsinya
     return itemDatabase;
@@ -24,9 +24,10 @@ class DbHelper {
   //buat tabel baru dengan nama item
   void _createDb(Database db, int version) async {
      await db.execute('''
- CREATE TABLE item (
+ CREATE TABLE kategori (
  id INTEGER PRIMARY KEY AUTOINCREMENT,
- kategoriProduk TEXT
+ kategoriProduk TEXT,
+ keterangan TEXT
  )
  ''');
     await db.execute('''
@@ -47,7 +48,7 @@ class DbHelper {
     return mapList;
   }
 
-  Future<List<Map<String, dynamic>>> kat() async {
+  Future<List<Map<String, dynamic>>> selectkat() async {
     Database db = await this.initDb();
     var mapList = await db.query('kategori', orderBy: 'kategoriProduk');
     return mapList;
@@ -105,7 +106,7 @@ class DbHelper {
   }
 
   Future<List<Kategori>> getItemListkat() async {
-    var itemMapList = await select();
+    var itemMapList = await selectkat();
     int count = itemMapList.length;
     List<Kategori> itemList = List<Kategori>();
     for (int i = 0; i < count; i++) {
