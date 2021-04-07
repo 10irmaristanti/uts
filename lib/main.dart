@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Daftar Produk"),
+            title: Text("Daftar Produk Make Up"),
             bottom: TabBar(
               tabs: [
                 Tab(
