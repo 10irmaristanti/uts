@@ -38,7 +38,7 @@ class Home2State extends State<Home2> {
           child: SizedBox(
             width: double.infinity,
             child: RaisedButton(
-              child: Text("Tambah Produk"),
+              child: Text("Tambah Kategori"),
               onPressed: () async {
                 var kategori= await navigateToEntryForm(context, null);
                 if (kategori != null) {
