@@ -36,7 +36,8 @@ class DbHelper {
  produk TEXT,
  harga INTEGER,
  kode TEXT,
- stok INTEGER
+ stok INTEGER,
+ valueDropdown TEXT
  )
  ''');
   }
@@ -47,7 +48,7 @@ class DbHelper {
     var mapList = await db.query('item', orderBy: 'produk');
     return mapList;
   }
-
+  
   Future<List<Map<String, dynamic>>> selectkat() async {
     Database db = await this.initDb();
     var mapList = await db.query('kategori', orderBy: 'kategoriProduk');

@@ -4,11 +4,15 @@ class Item {
   int _harga;
   String _kode;
   int _stok;
+  String _valueDropdown;
 
   int get id => _id;
 
   String get produk => this._produk;
   set produk(String value) => this._produk = value;
+
+  String get valueDropdown => this._valueDropdown;
+  set valueDropdown(String value) => this._valueDropdown = value;
 
   get harga => this._harga;
   set harga(value) => this._harga = value;
@@ -29,6 +33,7 @@ class Item {
     this._harga = map['harga'];
     this._kode = map['kode'];
     this._stok = map['stok'];
+    this._valueDropdown = map['valueDropdown'];
   }
 
   // konversi dari Item ke Map
@@ -39,6 +44,7 @@ class Item {
     map['harga'] = harga;
     map['kode'] = kode;
     map['stok'] = stok;
+    map['valueDropdown'] = this._valueDropdown;
     return map;
   }
 }

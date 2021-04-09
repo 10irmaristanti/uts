@@ -19,6 +19,8 @@ class EntryFormState extends State<EntryForm> {
   TextEditingController kodeController = TextEditingController();
   TextEditingController stokController = TextEditingController();
 
+  String dropdownValue = 'Wajah';
+  bool status = false;
   @override
   Widget build(BuildContext context) {
     //kondisi
@@ -27,6 +29,15 @@ class EntryFormState extends State<EntryForm> {
       priceController.text = item.harga.toString();
       kodeController.text = item.kode;
       stokController.text = item.stok.toString();
+      if(item.valueDropdown == ""){
+        item.valueDropdown == "Wajah";
+      }else{
+        if(status == true){
+          item.valueDropdown = dropdownValue;
+        }else {
+          dropdownValue = item.valueDropdown;
+        }
+      }
     }
     //rubah
     return Scaffold(
@@ -110,6 +121,30 @@ class EntryFormState extends State<EntryForm> {
                 ),
               ),
 
+               DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(Icons.arrow_downward),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String newValue) {
+        setState(() {
+          dropdownValue = newValue;
+          status = true;
+        });
+      },
+      items: <String>['Wajah', 'Bibir', 'Mata', 'Alis']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    ),
               // tombol button
               Padding(
                 padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
